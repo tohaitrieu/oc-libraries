@@ -1300,22 +1300,218 @@ cargo:rustc-cfg=feature="avcodec_version_greater_than_62_1"
 cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_1"))
 cargo:rustc-cfg=feature="avcodec_version_greater_than_62_10"
 cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_10"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_100"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_100"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_101"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_101"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_102"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_102"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_103"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_103"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_104"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_104"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_105"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_105"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_106"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_106"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_107"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_107"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_11"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_11"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_12"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_12"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_13"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_13"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_14"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_14"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_15"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_15"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_16"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_16"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_17"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_17"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_18"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_18"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_19"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_19"))
 cargo:rustc-cfg=feature="avcodec_version_greater_than_62_2"
 cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_2"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_20"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_20"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_21"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_21"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_22"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_22"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_23"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_23"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_24"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_24"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_25"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_25"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_26"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_26"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_27"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_27"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_28"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_28"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_29"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_29"))
 cargo:rustc-cfg=feature="avcodec_version_greater_than_62_3"
 cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_3"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_30"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_30"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_31"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_31"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_32"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_32"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_33"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_33"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_34"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_34"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_35"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_35"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_36"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_36"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_37"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_37"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_38"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_38"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_39"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_39"))
 cargo:rustc-cfg=feature="avcodec_version_greater_than_62_4"
 cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_4"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_40"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_40"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_41"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_41"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_42"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_42"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_43"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_43"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_44"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_44"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_45"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_45"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_46"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_46"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_47"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_47"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_48"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_48"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_49"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_49"))
 cargo:rustc-cfg=feature="avcodec_version_greater_than_62_5"
 cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_5"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_50"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_50"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_51"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_51"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_52"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_52"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_53"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_53"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_54"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_54"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_55"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_55"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_56"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_56"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_57"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_57"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_58"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_58"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_59"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_59"))
 cargo:rustc-cfg=feature="avcodec_version_greater_than_62_6"
 cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_6"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_60"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_60"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_61"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_61"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_62"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_62"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_63"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_63"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_64"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_64"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_65"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_65"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_66"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_66"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_67"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_67"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_68"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_68"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_69"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_69"))
 cargo:rustc-cfg=feature="avcodec_version_greater_than_62_7"
 cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_7"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_70"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_70"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_71"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_71"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_72"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_72"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_73"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_73"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_74"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_74"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_75"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_75"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_76"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_76"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_77"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_77"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_78"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_78"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_79"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_79"))
 cargo:rustc-cfg=feature="avcodec_version_greater_than_62_8"
 cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_8"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_80"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_80"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_81"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_81"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_82"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_82"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_83"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_83"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_84"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_84"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_85"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_85"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_86"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_86"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_87"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_87"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_88"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_88"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_89"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_89"))
 cargo:rustc-cfg=feature="avcodec_version_greater_than_62_9"
 cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_9"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_90"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_90"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_91"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_91"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_92"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_92"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_93"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_93"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_94"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_94"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_95"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_95"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_96"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_96"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_97"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_97"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_98"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_98"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_62_99"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_62_99"))
+cargo:rustc-cfg=feature="avcodec_version_greater_than_63_0"
+cargo:rustc-check-cfg=cfg(feature, values("avcodec_version_greater_than_63_0"))
 cargo:rustc-cfg=feature="ffmpeg_3_0"
 cargo:rustc-check-cfg=cfg(feature, values("ffmpeg_3_0"))
 cargo:rustc-cfg=feature="ffmpeg_3_1"
@@ -1350,7 +1546,9 @@ cargo:rustc-cfg=feature="ffmpeg_7_1"
 cargo:rustc-check-cfg=cfg(feature, values("ffmpeg_7_1"))
 cargo:rustc-cfg=feature="ffmpeg_8_0"
 cargo:rustc-check-cfg=cfg(feature, values("ffmpeg_8_0"))
+cargo:rustc-cfg=feature="ffmpeg_8_1"
 cargo:rustc-check-cfg=cfg(feature, values("ffmpeg_8_1"))
+cargo:rustc-cfg=feature="ffmpeg_9_0"
 cargo:rustc-check-cfg=cfg(feature, values("ffmpeg_9_0"))
 cargo:rustc-check-cfg=cfg(feature, values("ff_api_ac_vlc"))
 cargo:rustc-check-cfg=cfg(feature, values("ff_api_afd"))

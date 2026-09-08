@@ -13,6 +13,8 @@ pub struct Video {
     stream: usize,
     decoder: ffmpeg_next::decoder::Video,
     time_base: f64,
+    fps: f64,
+    duration: f64,
 }
 
 #[derive(Debug)]
@@ -44,12 +46,25 @@ impl Video {
             .ok_or(Error::NoVideoStream)?;
         let index = stream.index();
         let time_base = f64::from(stream.time_base());
+        // Nhịp TRUNG BÌNH, không phải nhịp danh nghĩa: tệp quay bằng điện thoại hay có nhịp thay đổi,
+        // và nhịp danh nghĩa của chúng nói dối.
+        let fps = {
+            let r = stream.avg_frame_rate();
+            let v = f64::from(r);
+            if v > 0.0 { v } else { 30.0 }
+        };
+        let duration = if stream.duration() > 0 {
+            stream.duration() as f64 * time_base
+        } else {
+            // Vài tệp không khai độ dài ở luồng; lấy của cả tệp, đơn vị micro giây.
+            input.duration() as f64 / 1_000_000.0
+        };
         let decoder = ffmpeg_next::codec::context::Context::from_parameters(stream.parameters())
             .map_err(|e| Error::Decode(e.to_string()))?
             .decoder()
             .video()
             .map_err(|e| Error::Decode(e.to_string()))?;
-        Ok(Self { input, stream: index, decoder, time_base })
+        Ok(Self { input, stream: index, decoder, time_base, fps, duration })
     }
 
     pub fn width(&self) -> u32 {
@@ -60,32 +75,55 @@ impl Video {
         self.decoder.height()
     }
 
+    /// Số khung mỗi giây của clip nguồn.
+    pub fn fps(&self) -> f64 {
+        self.fps
+    }
+
+    /// Độ dài clip, giây.
+    pub fn duration(&self) -> f64 {
+        self.duration
+    }
+
     /// Khung ở mốc `at` giây, thu về đúng chiều cao yêu cầu (giữ tỉ lệ). `height = 0` là giữ nguyên khổ.
     pub fn frame_at(&mut self, at: f64, height: u32) -> Result<Rgba, Error> {
+        // HAI đơn vị thời gian khác nhau, và lẫn chúng là lỗi im lặng.
+        //
+        // `seek` của cả tệp nhận mốc theo MICRO GIÂY, còn `pts` của khung đếm theo nhịp của luồng.
+        // Đưa nhịp luồng vào `seek` thì lệnh nhảy không tới đâu cả và bộ giải mã chạy từ đầu tệp —
+        // vẫn ra đúng hình, chỉ là chậm dần theo mốc, nên nhìn kết quả không thấy gì sai. Đo trên
+        // clip 1080×1920: khung ở giây 10 mất 895 ms, sau khi sửa còn vài mili giây.
         let ts = (at / self.time_base) as i64;
-        // Nhảy tới TRƯỚC mốc rồi tiến dần: nhảy tới sau mốc là lấy nhầm cảnh kế tiếp.
-        let _ = self.input.seek(ts, ..ts);
+        let micros = (at * 1_000_000.0) as i64;
+        // Nhảy tới TRƯỚC mốc rồi tiến dần: nhảy quá mốc là lấy nhầm cảnh kế tiếp.
+        let _ = self.input.seek(micros, ..micros);
         self.decoder.flush();
 
         let (w, h) = (self.decoder.width(), self.decoder.height());
+        let src_format = self.decoder.format();
         let out_h = if height == 0 { h } else { height };
         let out_w = ((w as f64 / h.max(1) as f64) * out_h as f64).round().max(1.0) as u32;
         let mut scaler = ffmpeg_next::software::scaling::Context::get(
-            self.decoder.format(), w, h,
+            src_format, w, h,
             ffmpeg_next::format::Pixel::RGBA, out_w, out_h,
             ffmpeg_next::software::scaling::Flags::BILINEAR,
         ).map_err(|e| Error::Decode(e.to_string()))?;
 
         let mut decoded = ffmpeg_next::util::frame::video::Video::empty();
-        let packets: Vec<_> = self.input.packets().collect();
-        for (stream, packet) in packets {
-            if stream.index() != self.stream {
+        // Mượn RIÊNG từng trường thay vì gom gói vào một `Vec`.
+        //
+        // Bản trước gom `input.packets()` vào `Vec` để tránh vướng mượn — và như vậy là **đọc cả tệp
+        // vào bộ nhớ** trước khi giải mã một khung. Đo trên clip 1080×1920: lấy khung ở giây 10 mất
+        // 931 ms, và con số tăng tuyến tính theo mốc, tức lệnh nhảy chẳng còn tác dụng gì.
+        let Self { input, decoder, stream: want, .. } = self;
+        for (stream, packet) in input.packets() {
+            if stream.index() != *want {
                 continue;
             }
-            if self.decoder.send_packet(&packet).is_err() {
+            if decoder.send_packet(&packet).is_err() {
                 continue;
             }
-            while self.decoder.receive_frame(&mut decoded).is_ok() {
+            while decoder.receive_frame(&mut decoded).is_ok() {
                 let pts = decoded.pts().unwrap_or(0);
                 // Khung đầu tiên CHẠM hoặc vượt mốc là khung cần. Dừng ngay — giải mã tiếp là tốn
                 // công cho những khung không ai xem.
