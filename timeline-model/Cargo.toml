@@ -1,0 +1,12 @@
+[package]
+name = "timeline-model"
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+description = "Mô hình dòng thời gian và ngữ nghĩa biên tập, dựng trên MLT. Lớp nối Rust cho một thư viện chưa có lớp nối nào còn sống."
+
+[dependencies]
+
+[build-dependencies]
+bindgen = "0.70"
+pkg-config = "0.3"

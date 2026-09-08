@@ -10,6 +10,14 @@ Phần **mở** của Open Creator. Hai việc, cố ý gộp vào một chỗ:
 
 Kho sản phẩm phụ thuộc vào kho này. Chiều ngược lại thì không.
 
+## Có gì trong đây
+
+- **`media-io`** — đọc khung hình và đỉnh âm thanh. Video qua FFmpeg, âm thanh qua `symphonia` thuần
+  Rust. Một bản cài đặt cho mọi nền tảng.
+- **`timeline-model`** — mô hình dòng thời gian và **ngữ nghĩa biên tập**, dựng trên MLT. Đo 08/09
+  trên Kdenlive: phần vẽ của họ 9 650 dòng, phần mô hình **23 581 dòng**. Đó là phần không nên viết
+  lại, và cả Kdenlive lẫn Shotcut đều lấy nó từ MLT.
+
 ## Vì sao bản cài nằm ở đây
 
 Tệp cài phát hành theo release của kho này. Băng thông miễn phí, không giới hạn, và **tệp sống độc
