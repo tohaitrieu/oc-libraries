@@ -1,0 +1,9 @@
+/private/tmp/claude-501/-Users-totrieu-Downloads-GitHub-open-creator/11a0c23c-91af-4ee6-b85a-376cd73f5f14/scratchpad/oc-libraries/media-io/target/release/build/clang-sys-d1e7dc953d0bfb96/build_script_build-d1e7dc953d0bfb96.d: /Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/clang-sys-1.9.1/build.rs /Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/clang-sys-1.9.1/build/macros.rs /Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/clang-sys-1.9.1/build/common.rs /Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/clang-sys-1.9.1/build/dynamic.rs /Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/clang-sys-1.9.1/build/static.rs
+
+/private/tmp/claude-501/-Users-totrieu-Downloads-GitHub-open-creator/11a0c23c-91af-4ee6-b85a-376cd73f5f14/scratchpad/oc-libraries/media-io/target/release/build/clang-sys-d1e7dc953d0bfb96/build_script_build-d1e7dc953d0bfb96: /Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/clang-sys-1.9.1/build.rs /Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/clang-sys-1.9.1/build/macros.rs /Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/clang-sys-1.9.1/build/common.rs /Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/clang-sys-1.9.1/build/dynamic.rs /Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/clang-sys-1.9.1/build/static.rs
+
+/Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/clang-sys-1.9.1/build.rs:
+/Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/clang-sys-1.9.1/build/macros.rs:
+/Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/clang-sys-1.9.1/build/common.rs:
+/Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/clang-sys-1.9.1/build/dynamic.rs:
+/Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/clang-sys-1.9.1/build/static.rs:

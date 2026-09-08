@@ -1,0 +1,10 @@
+/private/tmp/claude-501/-Users-totrieu-Downloads-GitHub-open-creator/11a0c23c-91af-4ee6-b85a-376cd73f5f14/scratchpad/oc-libraries/media-io/target/release/deps/cexpr-c79966c537c075da.d: /Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cexpr-0.6.0/src/lib.rs /Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cexpr-0.6.0/src/expr.rs /Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cexpr-0.6.0/src/literal.rs /Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cexpr-0.6.0/src/token.rs
+
+/private/tmp/claude-501/-Users-totrieu-Downloads-GitHub-open-creator/11a0c23c-91af-4ee6-b85a-376cd73f5f14/scratchpad/oc-libraries/media-io/target/release/deps/libcexpr-c79966c537c075da.rlib: /Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cexpr-0.6.0/src/lib.rs /Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cexpr-0.6.0/src/expr.rs /Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cexpr-0.6.0/src/literal.rs /Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cexpr-0.6.0/src/token.rs
+
+/private/tmp/claude-501/-Users-totrieu-Downloads-GitHub-open-creator/11a0c23c-91af-4ee6-b85a-376cd73f5f14/scratchpad/oc-libraries/media-io/target/release/deps/libcexpr-c79966c537c075da.rmeta: /Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cexpr-0.6.0/src/lib.rs /Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cexpr-0.6.0/src/expr.rs /Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cexpr-0.6.0/src/literal.rs /Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cexpr-0.6.0/src/token.rs
+
+/Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cexpr-0.6.0/src/lib.rs:
+/Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cexpr-0.6.0/src/expr.rs:
+/Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cexpr-0.6.0/src/literal.rs:
+/Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cexpr-0.6.0/src/token.rs:

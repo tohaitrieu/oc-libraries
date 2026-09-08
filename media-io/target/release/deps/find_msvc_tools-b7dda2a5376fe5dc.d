@@ -1,0 +1,9 @@
+/private/tmp/claude-501/-Users-totrieu-Downloads-GitHub-open-creator/11a0c23c-91af-4ee6-b85a-376cd73f5f14/scratchpad/oc-libraries/media-io/target/release/deps/find_msvc_tools-b7dda2a5376fe5dc.d: /Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.12/src/lib.rs /Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.12/src/find_tools.rs /Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.12/src/tool.rs
+
+/private/tmp/claude-501/-Users-totrieu-Downloads-GitHub-open-creator/11a0c23c-91af-4ee6-b85a-376cd73f5f14/scratchpad/oc-libraries/media-io/target/release/deps/libfind_msvc_tools-b7dda2a5376fe5dc.rlib: /Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.12/src/lib.rs /Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.12/src/find_tools.rs /Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.12/src/tool.rs
+
+/private/tmp/claude-501/-Users-totrieu-Downloads-GitHub-open-creator/11a0c23c-91af-4ee6-b85a-376cd73f5f14/scratchpad/oc-libraries/media-io/target/release/deps/libfind_msvc_tools-b7dda2a5376fe5dc.rmeta: /Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.12/src/lib.rs /Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.12/src/find_tools.rs /Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.12/src/tool.rs
+
+/Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.12/src/lib.rs:
+/Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.12/src/find_tools.rs:
+/Users/totrieu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/find-msvc-tools-0.1.12/src/tool.rs:

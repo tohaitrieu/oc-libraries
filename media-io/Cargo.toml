@@ -1,0 +1,16 @@
+[package]
+name = "media-io"
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+description = "Đọc khung hình và đỉnh âm thanh từ tệp media. Một bản cài đặt cho mọi nền tảng."
+
+[dependencies]
+# Giải mã video. Lớp ràng buộc này là WTFPL, nhưng thứ chạy thật là FFmpeg — và giấy phép của FFmpeg
+# phụ thuộc BẢN DỰNG. Phát hành thì phải là bản LGPL: không `--enable-gpl`, không x264/x265. Việc cần
+# ở đây là giải mã, mà giải mã nằm trong phần LGPL.
+ffmpeg-next = "9"
+
+# Giải mã âm thanh THUẦN RUST — không thư viện hệ thống, chạy được cả nơi không spawn được tiến trình
+# con. MPL-2.0: copyleft theo TỆP, sửa tệp của nó thì công bố đúng tệp đó, không lan sang mã khác.
+symphonia = { version = "0.5", features = ["wav", "mp3", "aac", "isomp4"] }
