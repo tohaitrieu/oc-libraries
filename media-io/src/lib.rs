@@ -12,6 +12,7 @@ pub mod video;
 pub mod writer;
 
 /// Ảnh RGBA8, hàng liền nhau.
+#[derive(Clone)]
 pub struct Rgba {
     pub width: u32,
     pub height: u32,
