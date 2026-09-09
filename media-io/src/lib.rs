@@ -9,6 +9,7 @@
 
 pub mod audio;
 pub mod video;
+pub mod writer;
 
 /// Ảnh RGBA8, hàng liền nhau.
 pub struct Rgba {
