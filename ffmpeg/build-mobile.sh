@@ -44,6 +44,11 @@ COMMON=(
   --enable-parser=h264,hevc,aac,mpeg4video,mjpeg,png
   --enable-protocol=file
   --enable-filter=scale,aresample,format,null,anull
+  # Bitstream filters, and NOT an optional extra: `--disable-everything` turns these off too, and
+  # then the platform encoder opens with "Bitstream filter not found" — an error that names neither
+  # the filter nor the build flag that removed it. MediaCodec needs the annex-b conversion to put
+  # h264 into mp4 at all, and `extract_extradata` to hand the muxer the parameter sets.
+  --enable-bsf=h264_mp4toannexb,hevc_mp4toannexb,extract_extradata,aac_adtstoasc,null
 )
 
 case "$WHAT" in
