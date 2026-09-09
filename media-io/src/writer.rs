@@ -72,10 +72,25 @@ impl std::error::Error for Error {}
 /// opens answers the real question.
 const ENCODERS: &[&str] = &["h264_videotoolbox", "h264_mediacodec", "libopenh264"];
 
+/// The audio half, absent for a silent export.
+struct Audio {
+    encoder: ff::encoder::Audio,
+    stream: usize,
+    /// Interleaved samples not yet handed to the encoder. AAC only accepts whole frames of a fixed
+    /// size, so a caller pushing arbitrary chunks leaves a remainder every time.
+    pending: Vec<f32>,
+    channels: usize,
+    /// Samples per channel already encoded — the only source of audio timestamps, for the same
+    /// reason the frame count is the only source of video ones.
+    samples: i64,
+    time_base: ff::Rational,
+}
+
 pub struct Writer {
     octx: ff::format::context::Output,
     video: ff::encoder::Video,
     video_stream: usize,
+    audio: Option<Audio>,
     scaler: ff::software::scaling::Context,
     /// Frames pushed so far — the only source of presentation timestamps.
     frames: i64,
@@ -110,6 +125,13 @@ pub fn open(path: &Path, spec: &Spec) -> Result<Writer, Error> {
     stream.set_time_base(ff::Rational::new(1, spec.fps as i32));
     let video_stream = stream.index();
 
+    // Both streams have to exist BEFORE the header goes out — an mp4 header lists them, and adding
+    // one afterwards is not a thing the muxer will do.
+    let audio = match &spec.audio {
+        Some(a) => Some(open_audio(&mut octx, a)?),
+        None => None,
+    };
+
     octx.write_header().map_err(|e| Error::Failed(e.to_string()))?;
 
     // Frames arrive RGBA from the renderer; h264 wants YUV420P. One scaler for the whole run — it
@@ -126,7 +148,65 @@ pub fn open(path: &Path, spec: &Spec) -> Result<Writer, Error> {
     .map_err(|e| Error::Failed(e.to_string()))?;
 
     let time_base = ff::Rational::new(1, spec.fps as i32);
-    Ok(Writer { octx, video, video_stream, scaler, frames: 0, time_base, path: path.to_path_buf() })
+    Ok(Writer { octx, video, video_stream, audio, scaler, frames: 0, time_base, path: path.to_path_buf() })
+}
+
+/// Open the AAC encoder and add its stream.
+///
+/// AAC and not something simpler: it is what mp4 carries everywhere, it is in a stock LGPL build,
+/// and FFmpeg's own encoder needs no external library. The alternative — writing raw PCM into mp4 —
+/// plays in almost nothing.
+fn open_audio(octx: &mut ff::format::context::Output, spec: &AudioSpec) -> Result<Audio, Error> {
+    let codec = ff::encoder::find(ff::codec::Id::AAC)
+        .ok_or_else(|| Error::NoEncoder("aac: not in this build".into()))?;
+    let mut enc = ff::codec::context::Context::new_with_codec(codec)
+        .encoder()
+        .audio()
+        .map_err(|e| Error::Failed(e.to_string()))?;
+    let channels = spec.channels.max(1) as u16;
+    enc.set_rate(spec.sample_rate as i32);
+    enc.set_channel_layout(ff::channel_layout::ChannelLayout::default(channels as i32));
+    // FLTP: AAC wants planar floats. The caller hands over interleaved samples, and `push_audio`
+    // deinterleaves — one small copy in a place that owns the format, rather than a rule every
+    // caller has to remember.
+    enc.set_format(ff::format::Sample::F32(ff::format::sample::Type::Planar));
+    enc.set_bit_rate(spec.bitrate as usize);
+    enc.set_time_base(ff::Rational::new(1, spec.sample_rate as i32));
+    let encoder = enc.open_as(codec).map_err(|e| Error::Failed(e.to_string()))?;
+
+    let mut stream = octx.add_stream(codec).map_err(|e| Error::Failed(e.to_string()))?;
+    stream.set_parameters(&encoder);
+    stream.set_time_base(ff::Rational::new(1, spec.sample_rate as i32));
+    let index = stream.index();
+
+    Ok(Audio {
+        encoder,
+        stream: index,
+        pending: Vec::new(),
+        channels: channels as usize,
+        samples: 0,
+        time_base: ff::Rational::new(1, spec.sample_rate as i32),
+    })
+}
+
+impl Audio {
+    /// Hand one whole frame to the encoder, deinterleaving on the way.
+    fn send(&mut self, block: &[f32], per_frame: usize) -> Result<(), Error> {
+        let mut frame = ff::frame::Audio::new(
+            ff::format::Sample::F32(ff::format::sample::Type::Planar),
+            per_frame,
+            self.encoder.channel_layout(),
+        );
+        for c in 0..self.channels {
+            let plane: &mut [f32] = frame.plane_mut(c);
+            for (i, slot) in plane.iter_mut().enumerate().take(per_frame) {
+                *slot = block[i * self.channels + c];
+            }
+        }
+        frame.set_pts(Some(self.samples));
+        self.samples += per_frame as i64;
+        self.encoder.send_frame(&frame).map_err(|e| Error::Failed(e.to_string()))
+    }
 }
 
 /// Try each encoder in turn and keep the first that opens.
@@ -201,6 +281,39 @@ impl Writer {
         Ok(())
     }
 
+    /// Push interleaved samples. Their timestamp is the running sample count — see the module note.
+    ///
+    /// Any length is accepted. AAC only takes whole frames of a fixed size, so whatever does not
+    /// fill one waits here for the next call; `finish` flushes the remainder.
+    pub fn push_audio(&mut self, samples: &[f32]) -> Result<(), Error> {
+        let Some(audio) = self.audio.as_mut() else {
+            return Err(Error::Failed("this writer carries no audio: open it with a spec that has one".into()));
+        };
+        audio.pending.extend_from_slice(samples);
+        let per_frame = audio.encoder.frame_size().max(1) as usize;
+        let chunk = per_frame * audio.channels;
+        while audio.pending.len() >= chunk {
+            let block: Vec<f32> = audio.pending.drain(..chunk).collect();
+            audio.send(&block, per_frame)?;
+            Self::drain_audio(&mut self.octx, audio)?;
+        }
+        Ok(())
+    }
+
+    /// Move whatever the audio encoder has produced into the file.
+    ///
+    /// A free function over `&mut` fields rather than a method: `push_audio` already holds a mutable
+    /// borrow of the audio half, and the borrow checker will not lend out `self` again.
+    fn drain_audio(octx: &mut ff::format::context::Output, audio: &mut Audio) -> Result<(), Error> {
+        let mut packet = ff::Packet::empty();
+        while audio.encoder.receive_packet(&mut packet).is_ok() {
+            packet.set_stream(audio.stream);
+            packet.rescale_ts(audio.time_base, octx.stream(audio.stream).unwrap().time_base());
+            packet.write_interleaved(octx).map_err(|e| Error::Failed(e.to_string()))?;
+        }
+        Ok(())
+    }
+
     /// Close the file. Returns bytes written.
     ///
     /// Takes `self`, not `&mut self`: once the trailer is out the writer is done, and the type says
@@ -210,6 +323,20 @@ impl Writer {
         // this loses the last frames — and the video simply ends early, with nothing to see wrong.
         self.video.send_eof().map_err(|e| Error::Failed(e.to_string()))?;
         self.drain()?;
+
+        if let Some(audio) = self.audio.as_mut() {
+            // The remainder is padded with silence rather than dropped. Dropping it cuts the last
+            // fraction of a second off the sound, which lands exactly on the final word.
+            if !audio.pending.is_empty() {
+                let per_frame = audio.encoder.frame_size().max(1) as usize;
+                let mut block = std::mem::take(&mut audio.pending);
+                block.resize(per_frame * audio.channels, 0.0);
+                audio.send(&block, per_frame)?;
+            }
+            audio.encoder.send_eof().map_err(|e| Error::Failed(e.to_string()))?;
+            Self::drain_audio(&mut self.octx, audio)?;
+        }
+
         self.octx.write_trailer().map_err(|e| Error::Failed(e.to_string()))?;
         std::fs::metadata(&self.path)
             .map(|m| m.len())

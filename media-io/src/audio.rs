@@ -55,7 +55,17 @@ pub fn peaks(path: &Path, points_per_second: u32) -> Result<Peaks, Error> {
         .format(&hint, mss, &FormatOptions::default(), &MetadataOptions::default())
         .map_err(|e| Error::Open(e.to_string()))?;
     let mut format = probed.format;
-    let track = format.default_track().ok_or(Error::NoAudioStream)?;
+    // The first track a decoder can be BUILT for, not the default one.
+    //
+    // `default_track` on an mp4 that carries video hands back the video track, and the failure that
+    // follows says "unsupported codec" — which reads like the file being wrong rather than the wrong
+    // track being picked. A voice-only file hides this completely, because there the default track
+    // IS the audio.
+    let track = format
+        .tracks()
+        .iter()
+        .find(|t| symphonia::default::get_codecs().get_codec(t.codec_params.codec).is_some())
+        .ok_or(Error::NoAudioStream)?;
     let track_id = track.id;
     let rate = track.codec_params.sample_rate.unwrap_or(48_000);
     let mut decoder = symphonia::default::get_codecs()
