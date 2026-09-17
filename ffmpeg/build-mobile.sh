@@ -48,7 +48,13 @@ COMMON=(
   # then the platform encoder opens with "Bitstream filter not found" — an error that names neither
   # the filter nor the build flag that removed it. MediaCodec needs the annex-b conversion to put
   # h264 into mp4 at all, and `extract_extradata` to hand the muxer the parameter sets.
-  --enable-bsf=h264_mp4toannexb,hevc_mp4toannexb,extract_extradata,aac_adtstoasc,null
+  #
+  # `h264_metadata` is the third one, and it is needed for a reason no one guesses from the name:
+  # MediaCodec rounds the encoding width up to a multiple of 16, so a 1080-wide template is encoded
+  # at 1088 and `mediacodecenc.c` builds `h264_metadata=crop_right=8` to record the 8 pixels the
+  # player must crop. Without the filter the encoder fails at init, and the phone writes a 0-byte
+  # mp4 — measured 17/09 on Android, the failure this comment's own warning describes.
+  --enable-bsf=h264_mp4toannexb,hevc_mp4toannexb,h264_metadata,extract_extradata,aac_adtstoasc,null
 )
 
 case "$WHAT" in
